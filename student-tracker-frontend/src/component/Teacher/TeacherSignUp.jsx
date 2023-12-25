@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const TeacherSignUp = () => {
   const [email, setEmail] = useState("");
