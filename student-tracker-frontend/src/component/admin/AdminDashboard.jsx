@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../MyContext";
 import axios from "axios";
+import BASE_URL from "../../constants";
 
 const AdminDashboard = () => {
   const [homeworks, setHomeworks] = useState([]);
@@ -8,7 +9,7 @@ const AdminDashboard = () => {
   const updateStatus = async (homeworkId, approvedStatus) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/admin/approve-homework/${homeworkId}`,
+        `${BASE_URL}/admin/approve-homework/${homeworkId}`,
         { approvedStatus },
         {
           headers: {
@@ -24,7 +25,6 @@ const AdminDashboard = () => {
             : homework
         )
       );
-      console.log("Approval response:", response.data); // Log the response data
     } catch (error) {
       console.error("Error updating homework status:", error);
     }
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
       try {
         // Fetch Homeworks
         const homeworksResponse = await axios.get(
-          `http://localhost:8000/admin/homeworks`,
+          `${BASE_URL}/admin/homeworks`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -51,8 +51,7 @@ const AdminDashboard = () => {
     homeworks();
   }, []);
   return (
-    <div className="overflow-x-auto mt-8 ">
-      {console.log(homeworks)}
+    <div className="overflow-x-auto mt-8">
       <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
         <thead className="ltr:text-left rtl:text-right">
           <tr>

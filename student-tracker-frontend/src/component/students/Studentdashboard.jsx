@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const Studentdashboard = () => {
   const [homeworks, setHomeworks] = useState([]);
@@ -10,7 +11,7 @@ const Studentdashboard = () => {
       try {
         // Fetch Homeworks
         const homeworksResponse = await axios.get(
-          `http://localhost:8000/student/approved-homeworks`,
+          `${BASE_URL}/student/approved-homeworks`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

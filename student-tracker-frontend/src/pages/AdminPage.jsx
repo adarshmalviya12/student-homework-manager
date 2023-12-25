@@ -3,6 +3,7 @@ import AdminDrawer from "../component/admin/AdminDrawer";
 import { Outlet } from "react-router-dom";
 import { MyContext } from "../MyContext";
 import axios from "axios";
+import BASE_URL from "../constants";
 
 const AdminPage = () => {
   const { user, setUser } = useContext(MyContext);
@@ -10,7 +11,7 @@ const AdminPage = () => {
 
   const init = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/admin/me", {
+      const response = await axios.get(`${BASE_URL}/admin/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -30,9 +31,9 @@ const AdminPage = () => {
     init();
   }, []);
   return (
-    <div className="p-4 sm:ml-64 flex bg-violet-200 h-screen justify-center ">
+    <div className="p-4 sm:ml-64 flex bg-violet-200 min-h-screen justify-center ">
       <AdminDrawer />
-      <div className="w-3/4">
+      <div className="w-3/4 max-w-screen-xl overflow-hidden">
         <Outlet />
       </div>
     </div>

@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const StudentLogin = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const StudentLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/student/login", {
+      const response = await axios.post(`${BASE_URL}/student/login`, {
         email: email,
         password: password,
       });

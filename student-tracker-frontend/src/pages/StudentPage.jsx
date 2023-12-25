@@ -4,6 +4,7 @@ import StudentDrawer from "../component/students/StudentDrawer";
 import { Outlet } from "react-router-dom";
 import { MyContext } from "../MyContext";
 import axios from "axios";
+import BASE_URL from "../constants";
 
 const StudentPage = () => {
   const { user, setUser } = useContext(MyContext);
@@ -11,7 +12,7 @@ const StudentPage = () => {
 
   const init = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/student/me", {
+      const response = await axios.get(`${BASE_URL}/student/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

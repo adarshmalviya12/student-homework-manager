@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import BASE_URL from "../../constants";
 const TeacherLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,18 +11,17 @@ const TeacherLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:8000/teacher/login", {
+    const response = await axios.post(`${BASE_URL}/teacher/login`, {
       email: email,
       password: password,
     });
-
     const token = response.data.token;
     localStorage.setItem("token", token);
-    navigate("/teacher/dashboard");
+    navigate("/teacher/create-homework");
   };
 
   useEffect(() => {
-    localStorage.setItem("token", null);  
+    localStorage.setItem("token", null);
   }, []);
 
   return (

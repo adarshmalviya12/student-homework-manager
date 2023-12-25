@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const SingleAnswerStudent = () => {
   const [answer, setAnswer] = useState(null);
@@ -13,7 +14,7 @@ const SingleAnswerStudent = () => {
     const fetchAnswer = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/student/single-homework/${cleanHomeworkId}`,
+          `${BASE_URL}/student/single-homework/${cleanHomeworkId}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -32,7 +33,7 @@ const SingleAnswerStudent = () => {
     try {
       // Send a POST request to submit the answer
       const response = await axios.post(
-        `http://localhost:8000/student/answer-homework/${cleanHomeworkId}`,
+        `${BASE_URL}/student/answer-homework/${cleanHomeworkId}`,
         { answerText },
         {
           headers: {

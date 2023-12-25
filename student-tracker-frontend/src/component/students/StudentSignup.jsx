@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const StudentSignup = () => {
   const [username, setUsername] = useState("");
@@ -14,14 +15,11 @@ const StudentSignup = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/student/signup",
-        {
-          username: username,
-          email: email,
-          password: password,
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/student/signup`, {
+        username: username,
+        email: email,
+        password: password,
+      });
       alert("successfull");
       console.log(response.data);
     } catch (error) {

@@ -3,6 +3,7 @@ import DrawerTeacher from "../component/Teacher/DrawerTeacher";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../MyContext";
+import BASE_URL from "../constants";
 
 const TeacherPage = () => {
   const { user, setUser } = useContext(MyContext);
@@ -10,7 +11,7 @@ const TeacherPage = () => {
 
   const init = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/teacher/me", {
+      const response = await axios.get(`${BASE_URL}/teacher/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

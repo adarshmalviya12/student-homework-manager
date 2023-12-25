@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { MyContext } from "../../MyContext";
+import BASE_URL from "../../constants";
 
 const CreateHomework = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ const CreateHomework = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/teacher/create-homework",
+        `${BASE_URL}/teacher/create-homework`,
         {
           title: title,
           createdBy: user._id,

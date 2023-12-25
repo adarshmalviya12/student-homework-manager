@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { MyContext } from "../../MyContext";
 import axios from "axios";
+import BASE_URL from "../../constants";
 
 const HomeworksComponent = () => {
   const { user, homeworks, setHomeworks } = useContext(MyContext);
@@ -11,7 +12,7 @@ const HomeworksComponent = () => {
       try {
         // Fetch Homeworks
         const homeworksResponse = await axios.get(
-          `http://localhost:8000/teacher/fetch-homeworks/${userId}`,
+          `${BASE_URL}/teacher/fetch-homeworks/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

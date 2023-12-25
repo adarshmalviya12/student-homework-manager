@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../MyContext";
 import axios from "axios";
-import HomeworksComponent from "./HomeworksComponents";
-import CreateHomework from "./CreateHomework";
-import AnswersList from "./AnswersList";
+import BASE_URL from "../../constants";
 
 const TeacherDashboard = () => {
   const { user, homeworks, setHomeworks, answers, setAnswers } =
@@ -16,7 +14,7 @@ const TeacherDashboard = () => {
       try {
         // Fetch Homeworks
         const homeworksResponse = await axios.get(
-          `http://localhost:8000/teacher/fetch-homeworks/${userId}`,
+          `${BASE_URL}/teacher/fetch-homeworks/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

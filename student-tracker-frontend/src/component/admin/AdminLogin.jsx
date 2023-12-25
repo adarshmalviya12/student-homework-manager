@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:8000/admin/login", {
+    const response = await axios.post(`${BASE_URL}/admin/login`, {
       email: email,
       password: password,
     });

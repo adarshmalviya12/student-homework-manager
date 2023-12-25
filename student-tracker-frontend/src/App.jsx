@@ -44,8 +44,7 @@ function App() {
           <Route path="/teacher/login" element={<TeacherLogin />} />
           <Route path="/teacher/signup" element={<TeacherSignUp />} />
           <Route path="/teacher" element={<TeacherPage />}>
-            <Route path="dashboard" element={<TeacherDashboard />} />
-            <Route path="create-homework" element={<CreateHomework />} />
+            <Route index path="create-homework" element={<CreateHomework />} />
             <Route path="all-homework" element={<HomeworksComponent />} />
             <Route path="students-homework" element={<AnswersList />} />
             <Route path="answer/:answerId" element={<SingleAnswer />} />

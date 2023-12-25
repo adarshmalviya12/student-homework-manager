@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BASE_URL from "../../constants";
 
 const SingleAnswer = () => {
   const [answer, setAnswer] = useState(null);
@@ -10,7 +11,7 @@ const SingleAnswer = () => {
   const handleStatus = async (status) => {
     try {
       await axios.put(
-        `http://localhost:8000/teacher/update-answer-status/${cleanAnswerId}`,
+        `${BASE_URL}/teacher/update-answer-status/${cleanAnswerId}`,
         { newStatus: status },
         {
           headers: {
@@ -28,7 +29,7 @@ const SingleAnswer = () => {
   useEffect(() => {
     const fetchAnswer = async () => {
       const response = await axios.get(
-        `http://localhost:8000/teacher/fetch-answer/${cleanAnswerId}`,
+        `${BASE_URL}/teacher/fetch-answer/${cleanAnswerId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { MyContext } from "../../MyContext";
 import axios from "axios";
+import BASE_URL from "../../constants";
 
 const AnswersList = () => {
   const { user, answers, setAnswers } = useContext(MyContext);
@@ -14,7 +15,7 @@ const AnswersList = () => {
       try {
         // Fetch Answers
         const answersResponse = await axios.get(
-          `http://localhost:8000/teacher/fetch-answers/${userId}`,
+          `${BASE_URL}/teacher/fetch-answers/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

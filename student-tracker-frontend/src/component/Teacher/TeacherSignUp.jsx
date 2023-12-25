@@ -14,14 +14,11 @@ const TeacherSignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/teacher/signup",
-        {
-          email: email,
-          username: username,
-          password: password,
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/teacher/signup`, {
+        email: email,
+        username: username,
+        password: password,
+      });
       alert("Sign Up successfull");
     } catch (error) {
       console.log(error.message);
